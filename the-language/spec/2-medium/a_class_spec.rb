@@ -25,7 +25,7 @@ RSpec.describe 'a ruby class' do
     fido = Dog2.new
     fido.set_name('Fido')
 
-    expect { fido.name }.to raise_error()
+    expect { fido.name }.to raise_error(NoMethodError)
     expect do
       eval 'fido.@name'
       # NOTE: Using eval because the above line is a syntax error.
