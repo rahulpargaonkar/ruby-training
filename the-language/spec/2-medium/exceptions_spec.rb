@@ -73,6 +73,6 @@ RSpec.describe 'exceptions' do
     cold_array = [1, 2].freeze
     hot_array = [100, 200]
 
-    expect { cold_array.push(hot_array) }.to raise_error()
+    expect { cold_array.push(hot_array) }.to raise_error(FrozenError)
   end
 end
