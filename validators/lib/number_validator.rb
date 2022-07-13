@@ -8,28 +8,16 @@ class NumberValidator
     return number.even? ? :even : :odd
   end
 
-  def divisible_by_three
-    return __method__ if number.modulo(3).zero?
-  end
-
-  def divisible_by_five
-    return __method__ if number.modulo(5).zero?
-  end
-
-  def divisible_by_seven
-    return __method__ if number.modulo(7).zero?
-  end
-
-  def divisible_by_nine
-    return __method__ if number.modulo(9).zero?
-  end
-
   def validate(number)
     # WRITE THIS CODE
-    @number=number
+    @number = number
+    value = []
+    hash = {3 => 'three', 5 => 'five', 7=> 'seven', 9=> 'nine'}
+
     raise InvalidNumberError unless number.is_a?(Integer)
-    [] << number_groups  << divisible_by_three << divisible_by_five <<
-      divisible_by_seven << divisible_by_nine
+    value << number_groups << [3, 5, 7, 9].each do |item|
+      value << "divisible_by_#{hash[item]}".to_sym if number.modulo(item).zero?
+    end
 
   end
 end
