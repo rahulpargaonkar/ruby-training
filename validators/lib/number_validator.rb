@@ -1,24 +1,31 @@
 # frozen_string_literal: true
 
 class NumberValidator
+  attr_reader :number, :value, :number_hash
 
-  attr_reader :number
-
-  def number_groups
-    return number.even? ? :even : :odd
+  def initialize
+    @number_hash = { 3 => 'three', 5 => 'five', 7 => 'seven', 9 => 'nine' }
+    @value = []
   end
 
   def validate(number)
-    # WRITE THIS CODE
     @number = number
-    value = []
-    hash = {3 => 'three', 5 => 'five', 7=> 'seven', 9=> 'nine'}
-
     raise InvalidNumberError unless number.is_a?(Integer)
-    value << number_groups << [3, 5, 7, 9].each do |item|
-      value << "divisible_by_#{hash[item]}".to_sym if number.modulo(item).zero?
-    end
 
+    value << number_groups
+    value << divisible_by_numbers
+  end
+
+  private
+
+  def number_groups
+    number.even? ? :even : :odd
+  end
+
+  def divisible_by_numbers
+    number_hash.each_key do |item|
+      value << "divisible_by_#{number_hash[item]}".to_sym if number.modulo(item).zero?
+    end
   end
 end
 

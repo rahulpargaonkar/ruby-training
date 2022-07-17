@@ -4,6 +4,18 @@ class LetterValidator
 
   attr_reader :letter
 
+  def validate(letter)
+    # WRITE THIS CODE
+    @letter=letter
+    value= []
+    raise InvalidLetterError if letter.length > 1
+    value << letter_class
+    value << letter_half
+    value << most_comman_letter
+  end
+
+  private
+
   def letter_class
     return letter.match(/[aeiou]/) ? :vowel : :consonant
   end
@@ -16,12 +28,7 @@ class LetterValidator
     return :common_letter if letter.match(/[etaio]/)
   end
 
-  def validate(letter)
-    # WRITE THIS CODE
-    @letter=letter
-    raise InvalidLetterError if letter.length > 1
-    [] << letter_class << letter_half << most_comman_letter
-  end
+
 end
 
 # Do not edit this code!
