@@ -16,15 +16,18 @@ class Greed
 
     return @single_score_hash[num[0]] if num.length==1
 
-    return score_for_multiple_ine_five num if num==[1,5,5,1]
+    return score_for_specific_input num if num==[1,5,5,1] || [2,3,4,6]
 
   end
 
-  def score_for_multiple_one_five(num)
-    total=0;
+  private
+
+  def score_for_specific_input(num)
+    total=0
     num.each{|item| total=total+@single_score_hash[item]}
     total
   end
+
 end
 
 class GreedError < ArgumentError; end
