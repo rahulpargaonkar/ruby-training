@@ -27,7 +27,6 @@ class Greed
 
   def score_for_specific_input(num)
     total = 0
-    puts num.to_s
     num.each { |item| total += @single_score_hash[item] }
     total
   end
@@ -42,7 +41,7 @@ class Greed
           total=total+(item*@triple_score_hash[item])
           occurrence=occurrence-3
         else
-          total=total+(item*@single_score_hash[item])
+          total=total+@single_score_hash[item]
           occurrence=occurrence-1
         end
       end
