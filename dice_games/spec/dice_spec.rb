@@ -52,5 +52,9 @@ RSpec.describe Dice do
     # If the rolls are random, then it is possible (although not
     # likely) that two consecutive rolls are equal.  What would be a
     # better way to test this?
+    #
+    # There is math involved in it. Due to randomness of values each time,
+    # its most likely we wont get the same values,
+    # so according to me there is no such way to test for the equality
   end
 end
